@@ -1,14 +1,10 @@
-// import React, { useState } from "react";
+import { createContext } from "react";
 
-// function AuthContext({children}: {children: React.ReactNode}) {
-//     const [jwt, setJwt] = useState("");
-//     const [publicKey, setPublicKey] = useState("");
+type AuthContextType = {
+  jwt: string | null;
+  publicKey: string | null;
+  login: (jwt: string, publicKey: string) => void;
+  logout: () => void;
+};
 
-//     const authContext = React.createContext("");
-
-// 	return <authContext.Provider value={{jwt, setJwt, publicKey, setPublicKey}}>
-//         {children};
-//     </authContext.Provider>
-// }
-
-// export default AuthContext;
+export const AuthContext = createContext<AuthContextType | null>(null);
