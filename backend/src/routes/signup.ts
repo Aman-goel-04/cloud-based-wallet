@@ -11,7 +11,6 @@ const userPublicKey = ecdh.getPublicKey("hex", "compressed");
 export const signupRouter = Router();
 
 signupRouter.post("/signup", async (req: Request, res: Response) => {
-	console.log("heyy");
 	const { username, password } = (req.body as any) ?? {};
 
 	const existingUser = await User.findOne({

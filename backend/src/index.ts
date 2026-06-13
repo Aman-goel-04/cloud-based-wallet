@@ -9,8 +9,6 @@ import { getTxnStatusRouter } from "./routes/getTxnStatus.js";
 
 await connectDB();
 
-console.log("RPC URL:", process.env.SOLANA_RPC_URL);
-
 export const app = express();
 
 app.use(express.json());

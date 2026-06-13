@@ -31,7 +31,7 @@ async function processTransaction(txnId: string, user: any, message: string) {
 		const connection = new Connection(`${process.env.SOLANA_RPC_URL!}`);
 
 		const txnBuffer = Buffer.from(message, "base64");
-		const transaction = VersionedTransaction.deserialize(txnBuffer);
+		// const transaction = VersionedTransaction.deserialize(txnBuffer);
 
 		const signResponse = await getTurnkey()
 			.apiClient()
@@ -42,22 +42,12 @@ async function processTransaction(txnId: string, user: any, message: string) {
 				type: "TRANSACTION_TYPE_SOLANA",
 			});
 
-		console.log("SIGN RESPONSE:", JSON.stringify(signResponse, null, 2));
-
 		const signedTxnBytes = Buffer.from(
 			signResponse.signedTransaction,
 			"hex",
 		);
 
 		const signedTxn = VersionedTransaction.deserialize(signedTxnBytes);
-		console.log(
-			"SIGNED TX HEX LENGTH:",
-			signResponse.signedTransaction.length,
-		);
-		console.log(
-			"ORIGINAL TX HEX LENGTH:",
-			txnBuffer.toString("hex").length,
-		);
 
 		const signature = await connection.sendTransaction(signedTxn);
 		await connection.confirmTransaction(signature);

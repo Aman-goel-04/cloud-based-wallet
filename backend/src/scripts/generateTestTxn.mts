@@ -14,7 +14,7 @@ async function main() {
     SystemProgram.transfer({ fromPubkey: from, toPubkey: to, lamports: 1_000_000 }) // min amount for rent exemption 
   );
 
-  console.log(txn.serialize({ requireAllSignatures: false }).toString("base64"));
+  console.log(txn.serialize({ requireAllSignatures: false }).toString("base64")); // pasted in the body of the getTxnStatus rquest
 }
 
 main();
