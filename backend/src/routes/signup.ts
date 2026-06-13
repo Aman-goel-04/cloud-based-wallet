@@ -41,6 +41,18 @@ signupRouter.post("/signup", async (req: Request, res: Response) => {
 					authenticators: [],
 					oauthProviders: [],
 				},
+				{
+					userName: "backend-signer",
+					apiKeys: [
+						{
+							apiKeyName: "backend-api-key",
+							publicKey: process.env.TURNKEY_API_PUBLIC_KEY!,
+							curveType: "API_KEY_CURVE_P256",
+						},
+					],
+					authenticators: [],
+					oauthProviders: [],
+				},
 			],
 			rootQuorumThreshold: 1,
 			wallet: {
