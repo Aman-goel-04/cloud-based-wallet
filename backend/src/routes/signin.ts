@@ -1,10 +1,12 @@
-import type { Request, Response } from "express";
+import { Router, type Request, type Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
-import { app } from "../index.js";
 
-app.post("/api/v1/signin", async (req: Request, res: Response) => {
+
+export const signinRouter = Router();
+
+signinRouter.post("/signin", async (req: Request, res: Response) => {
   const { username, password } = req.body;
 
   const user = await User.findOne({ username });
