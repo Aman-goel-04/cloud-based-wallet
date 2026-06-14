@@ -57,6 +57,15 @@ function Signin() {
 				/>
 				<button type="submit"> Sign In </button>
 			</form>
+			<div>
+				<button
+					onClick={() => {
+						navigate("/signup");
+					}}
+				>
+					Don't have an account
+				</button>
+			</div>
 		</>
 	);
 }
