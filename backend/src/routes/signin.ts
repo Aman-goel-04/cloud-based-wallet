@@ -18,5 +18,7 @@ signinRouter.post("/signin", async (req: Request, res: Response) => {
     expiresIn: "7d",
   });
 
-  return res.status(200).json({ jwt: token });
+  const publicKey = user.publicKey;
+
+  return res.status(200).json({ jwt: token, publicKey });
 });

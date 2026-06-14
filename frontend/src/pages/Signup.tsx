@@ -5,7 +5,7 @@ import { instance } from "../api/client";
 function Signup() {
 	// const authcontext = useContext(AuthContext);
 	const [formData, setFormData] = useState({ username: "", password: "" });
-    const [publicKey, setPublicKey] = useState("");
+	const [publicKey, setPublicKey] = useState("");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -23,9 +23,9 @@ function Signup() {
 				username: formData.username,
 				password: formData.password,
 			});
-            setPublicKey(response.data.publicKey);
+			setPublicKey(response.data.publicKey);
 		} catch (error) {
-            if (axios.isAxiosError(error)) {
+			if (axios.isAxiosError(error)) {
 				alert(error.response?.data?.message ?? "Something went wrong");
 			} else {
 				alert("Something went wrong");
@@ -44,13 +44,13 @@ function Signup() {
 				/>
 				<input
 					name="password"
-					type="text"
+					type="password"
 					value={formData.password}
 					onChange={handleChange}
 				/>
 				<button type="submit"> Sign Up </button>
 			</form>
-            {publicKey && <p>Your wallet address: {publicKey}</p>}
+			{publicKey && <p>Your wallet address: {publicKey}</p>}
 		</>
 	);
 }
